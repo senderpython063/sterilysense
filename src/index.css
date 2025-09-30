@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SterilySense Dashboard Design System - Medical Tech Aesthetic */
+
+@layer base {
+  :root {
+    /* Base Background - Deep Space Medical */
+    --background: 222 24% 6%;
+    --foreground: 195 100% 95%;
+
+    /* Card System - Glass Morphism */
+    --card: 222 20% 8%;
+    --card-foreground: 195 100% 95%;
+    --card-glow: 175 100% 40%;
+
+    /* Popover & Overlays */
+    --popover: 222 20% 8%;
+    --popover-foreground: 195 100% 95%;
+
+    /* Primary Brand - Medical Teal */
+    --primary: 175 100% 40%;
+    --primary-foreground: 222 24% 6%;
+    --primary-glow: 175 100% 60%;
+    --primary-dark: 175 100% 20%;
+
+    /* Secondary - Electric Blue */
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 222 24% 6%;
+    --secondary-glow: 210 100% 65%;
+
+    /* Success - UV Green */
+    --success: 140 100% 40%;
+    --success-foreground: 222 24% 6%;
+    --success-glow: 140 100% 60%;
+
+    /* Warning - Contamination Orange */
+    --warning: 30 100% 55%;
+    --warning-foreground: 222 24% 6%;
+    --warning-glow: 30 100% 70%;
+
+    /* Danger - Critical Red */
+    --danger: 0 85% 55%;
+    --danger-foreground: 195 100% 95%;
+    --danger-glow: 0 85% 70%;
+
+    /* Muted Elements */
+    --muted: 222 16% 12%;
+    --muted-foreground: 195 50% 70%;
+
+    /* Accent - Cyber Purple */
+    --accent: 260 100% 60%;
+    --accent-foreground: 195 100% 95%;
+    --accent-glow: 260 100% 80%;
+
+    /* Destructive */
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 195 100% 95%;
+
+    /* Interactive Elements */
+    --border: 222 20% 16%;
+    --input: 222 20% 12%;
+    --ring: 175 100% 40%;
+
+    /* Design Tokens */
+    --radius: 0.75rem;
+    --radius-large: 1rem;
+    --radius-full: 9999px;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-danger: linear-gradient(135deg, hsl(var(--danger)), hsl(var(--warning)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--primary)));
+    --gradient-glass: linear-gradient(135deg, 
+      hsl(var(--card) / 0.8), 
+      hsl(var(--card) / 0.4));
+    --gradient-glow: radial-gradient(circle at center, 
+      hsl(var(--primary-glow) / 0.3), 
+      transparent 70%);
+
+    /* Shadows & Glows */
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+    --shadow-danger: 0 0 30px hsl(var(--danger-glow) / 0.4);
+    --shadow-success: 0 0 30px hsl(var(--success-glow) / 0.3);
+    --shadow-card: 0 8px 32px hsl(var(--primary) / 0.15);
+    --shadow-elevated: 0 16px 48px hsl(var(--primary) / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animation-glow: glow 3s ease-in-out infinite alternate;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light theme adjustments (when needed) */
+  .light {
+    --background: 195 100% 98%;
+    --foreground: 222 24% 6%;
+    --card: 195 100% 96%;
+    --muted: 195 30% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: radial-gradient(ellipse at top, hsl(var(--primary) / 0.1), transparent 50%),
+                radial-gradient(ellipse at bottom, hsl(var(--secondary) / 0.1), transparent 50%),
+                hsl(var(--background));
+  }
+
+  /* Font Families */
+  .font-inter { font-family: 'Inter', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+}
+
+/* Custom Animations */
+@keyframes glow {
+  0% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
+  100% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.7);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes data-flow {
+  0% { transform: translateX(-100%) translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100vw) translateY(-20px); opacity: 0; }
+}
+
+@keyframes contamination-alert {
+  0%, 100% { background-color: hsl(var(--danger) / 0.2); }
+  50% { background-color: hsl(var(--danger) / 0.5); }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .glow-danger { box-shadow: var(--shadow-danger); }
+  .glow-success { box-shadow: var(--shadow-success); }
+  
+  .animate-glow { animation: var(--animation-glow); }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+  .animate-data-flow { animation: data-flow 4s linear infinite; }
+  .animate-contamination-alert { animation: contamination-alert 1s ease-in-out infinite; }
+  
+  .glass-card {
+    background: var(--gradient-glass);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-danger { background: var(--gradient-danger); }
+  .gradient-success { background: var(--gradient-success); }
+}
